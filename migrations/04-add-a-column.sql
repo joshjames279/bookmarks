@@ -1,0 +1,1 @@
+alter table bookmarks add info varchar(60);
