@@ -7,6 +7,10 @@
 </head>
 <body>
     <h1>Bookmarks</h1>
-    <p><%=Bookmarks%></p>
+    <ul>
+        <% for (var i = 0; i < Bookmarks.length ; i++) { %>
+            <li> <%= Bookmarks[i] %> </li>
+        <% } %>
+    </ul>
 </body>
 </html>

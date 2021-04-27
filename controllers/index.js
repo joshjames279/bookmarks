@@ -10,7 +10,6 @@ sequelize.authenticate().then(async () => {
 
   bookmarks = await models.Bookmark.findAll();
 
-  console.log(bookmarks)
 })
 
 router.get("/", function (req, res) {
