@@ -1,19 +1,23 @@
-const bookmark = (sequelize, DataTypes) => {
-    const Bookmark = sequelize.define('bookmark', {
-      url: {
-        type: DataTypes.STRING(60)
-      },
-      info: {
-        type: DataTypes.STRING(60)
-      },
-      tag: {
-          type: DataTypes.STRING(60)
-      }
-    }, {
-      timestamps: false
-    });
-  
-    return Bookmark;
+'use strict';
+const { Model } = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class bookmark extends Model {
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
+    }
   };
-  
-  module.exports = bookmark
+  bookmark.init({
+    url: DataTypes.STRING,
+    info: DataTypes.STRING,
+    tag: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'bookmark',
+  });
+  return bookmark;
+};
