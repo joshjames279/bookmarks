@@ -16,11 +16,11 @@ router.get("/", async function (req, res) {
 
 router.post("/", async function (req,res) {
 
-  Bookmark.create(
+  await Bookmark.create(
     {
       url: req.body.url,
-      "createdAt": NOW(),
-      "updatedAt": NOW(),
+      // "createdAt": NOW(),
+      // "updatedAt": NOW(),
     }
   )
 
