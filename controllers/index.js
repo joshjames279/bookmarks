@@ -14,4 +14,22 @@ router.get("/", async function (req, res) {
    
 });
 
+router.post("/", async function (req,res) {
+
+  Bookmark.create(
+    {
+      url: req.body.url,
+      "createdAt": NOW(),
+      "updatedAt": NOW(),
+    }
+  )
+
+  const bookmarks = await Bookmark.findAll();
+  // add
+
+  res.render("pages/index", {
+    Bookmarks: bookmarks.map(bookList => bookList.url)
+  })
+})
+
 module.exports = router;
