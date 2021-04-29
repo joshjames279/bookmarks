@@ -3,6 +3,8 @@ let router = express.Router();
 
 const Bookmark = require("../models").bookmark;
 
+//START UP
+
 router.get("/", async function (req, res) {
   const bookmarks = await Bookmark.findAll();
 
@@ -10,6 +12,8 @@ router.get("/", async function (req, res) {
     Bookmarks: bookmarks.map((bookList) => bookList),
   });
 });
+
+//ADD
 
 router.post("/", async function (req, res) {
   await Bookmark.create({
@@ -23,6 +27,8 @@ router.post("/", async function (req, res) {
   });
 });
 
+//DELETE
+
 router.delete("/:bookmarkId", async function (req, res) {
   await Bookmark.destroy({ where: { id: req.params.bookmarkId } });
 
@@ -32,6 +38,8 @@ router.delete("/:bookmarkId", async function (req, res) {
     Bookmarks: bookmarks.map((bookList) => bookList),
   });
 });
+
+//UPDATE
 
 router.get("/:bookmarkId/edit", async function (req, res) {
   const bookmark = await Bookmark.findOne({
