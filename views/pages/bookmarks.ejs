@@ -13,7 +13,7 @@
             <li id="bookmark-<%= i %>" > <%= Bookmarks[i].url %> </li>
                 <input id="delete-button-<%= i %>" type="submit" value="Delete"/>
             </form>
-            <form action="/bookmarks/<%= Bookmarks[i].id %>/update" method="GET">
+            <form action="/bookmarks/<%= Bookmarks[i].id %>/edit" method="GET">
                 <input id="update-button-<%= i %>" type="submit" value="Update"/>
             </form>
         <% } %>
@@ -23,4 +23,4 @@
         <input id="addButton" type="submit" value="Add">
     </form>
 </body>
-</html>
+</html> 
