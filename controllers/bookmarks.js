@@ -37,7 +37,6 @@ router.get("/:bookmarkId/edit", async function (req, res) {
   const bookmark = await Bookmark.findOne({
     where: { id: req.params.bookmarkId },
   });
-  console.log(bookmark);
   res.render("pages/update", {
     bookmark: bookmark,
     Url: bookmark.dataValues.url,
