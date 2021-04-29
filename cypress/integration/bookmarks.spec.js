@@ -2,7 +2,7 @@ describe("Bookmark page tests:", function(){
     
     beforeEach(function(){
         cy.task("resetDb");
-        cy.visit('/')
+        cy.visit('/bookmarks')
     })
 
     it("Checks for a form and add button", function(){

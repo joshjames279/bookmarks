@@ -15,7 +15,7 @@
 /**
  * @type {Cypress.PluginConfig}
  */
- const truncateTables = require('../../node_modules/database-cleaner')
+ const truncateTables = require('../../database-cleaner')
 
  module.exports = (on, config) => {
    on('task', {

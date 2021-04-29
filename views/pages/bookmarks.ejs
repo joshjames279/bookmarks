@@ -9,10 +9,13 @@
     <h1>Bookmarks</h1>
     <ul>
         <% for (var i = 0; i < Bookmarks.length ; i++) { %>
-            <li> <%= Bookmarks[i] %> </li><form action="/" method="POST"><input id=`delete-button-${i}` type="button" value="Delete"/></form>
+            <form action="/bookmarks/<%= Bookmarks[i].id %>?_method=DELETE" method="POST">
+            <li id="bookmark-<%= i %>"" > <%= Bookmarks[i].url %> </li>
+                <input id="delete-button-<%= i %>" type="submit" value="Delete"/>
+            </form>
         <% } %>
     </ul>
-    <form action="/" method="POST">
+    <form action="/bookmarks" method="POST">
         <input id="addForm" type="text" name="url">
         <input id="addButton" type="submit" value="Add">
     </form>
