@@ -7,9 +7,7 @@ router.get("/", async function (req, res) {
   const bookmarks = await Bookmark.findAll();
 
   res.render("pages/bookmarks", {
-    //Bookmarks: bookmarks.map(bookList => bookList.dataValues.url) 
-    //Because the table contents are stored in an object inside an array, we need to map.
-    Bookmarks: bookmarks.map(bookList => bookList.url)
+    Bookmarks: bookmarks.map(bookList => bookList)
   });
    
 });

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, maximum-scale=1">
+ <title></title>
+</head>
+<body>
+    <p> <%= Url %> </p>
+<form action="/bookmarks/<%= bookmark.id %>?_method=PUT" method="POST">
+    <input id="updateForm" type="text">
+    <input id="updateButton" type="submit" value="Update">
+</form>
+</body>
+</html>
