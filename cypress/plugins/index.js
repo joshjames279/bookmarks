@@ -15,8 +15,15 @@
 /**
  * @type {Cypress.PluginConfig}
  */
-// eslint-disable-next-line no-unused-vars
-module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
-}
+ const truncateTables = require('../../node_modules/database-cleaner')
+
+ module.exports = (on, config) => {
+   on('task', {
+     resetDb() {
+       console.log('running resetDb task')
+       truncateTables()
+       return null
+     },
+   })
+ }
+ 

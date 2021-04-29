@@ -9,7 +9,7 @@
     <h1>Bookmarks</h1>
     <ul>
         <% for (var i = 0; i < Bookmarks.length ; i++) { %>
-            <li> <%= Bookmarks[i] %> </li>
+            <li> <%= Bookmarks[i] %> </li><form action="/" method="POST"><input id=`delete-button-${i}` type="button" value="Delete"/></form>
         <% } %>
     </ul>
     <form action="/" method="POST">
