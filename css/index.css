@@ -1,0 +1,14 @@
+  h1 {
+    align-items: center;
+  }
+
+  .comment{
+    display: table;
+    margin: 0 auto;
+    
+  }
+
+  .commentButton{
+    margin:auto;
+  display:table;
+  }

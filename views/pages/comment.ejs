@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, maximum-scale=1">
+ <title></title>
+</head>
+<body>
+    <p id="comment"> <%= Comment %> </p>
+<form action="/comment/<%= bookmark.id %>/edit" method="GET">
+    <input id="changeButton" type="submit" value="Change">
+</form>
+</body>
+</html>

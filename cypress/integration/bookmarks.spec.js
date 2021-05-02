@@ -40,4 +40,17 @@ describe("Bookmark page tests:", function(){
 
         cy.contains('https://google.co.uk')
     })
+
+    it("Check ability to add comments", function(){
+        cy.get('#addForm').type('https://developer.mozilla.org/en-US/')
+        cy.get('#addButton').click()
+        cy.get('#addForm').type('https://google.com')
+        cy.get('#addButton').click()
+
+        cy.get('#comment-button-1').click()
+        cy.get("#changeButton").click()
+        cy.get('#commentForm').type("A lovely search engine")
+        cy.get("#commentButton").click()
+        cy.contains("A lovely search engine")
+    })
 }) 

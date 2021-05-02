@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, maximum-scale=1">
+ <title></title>
+</head>
+<body>
+<form action="/comment/<%= bookmark.id %>?_method=PUT" method="POST">
+    <input id="commentForm" type="text" name="comment">
+    <input id="commentButton" type="submit" value="Comment">
+</form>
+</body>
+</html>

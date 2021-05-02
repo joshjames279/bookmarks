@@ -3,24 +3,42 @@
 <head>
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, maximum-scale=1">
+ <link rel="stylesheet" type="text/css" href="/index.css" />
  <title>Bookmarks</title>
 </head>
 <body>
-    <h1>Bookmarks</h1>
-    <ul>
-        <% for (var i = 0; i < Bookmarks.length ; i++) { %>
-            <form action="/bookmarks/<%= Bookmarks[i].id %>?_method=DELETE" method="POST">
-            <li id="bookmark-<%= i %>" > <%= Bookmarks[i].url %> </li>
-                <input id="delete-button-<%= i %>" type="submit" value="Delete"/>
-            </form>
-            <form action="/bookmarks/<%= Bookmarks[i].id %>/edit" method="GET">
-                <input id="update-button-<%= i %>" type="submit" value="Update"/>
-            </form>
-        <% } %>
-    </ul>
+    <h1 style="text-align:center">Bookmarks</h1>
+    <table style="width:100%">
     <form action="/bookmarks" method="POST">
         <input id="addForm" type="text" name="url">
         <input id="addButton" type="submit" value="Add">
     </form>
+    <tr>
+        <th></th>
+        <th></th> 
+        <th></th>
+        <th></th>
+      </tr>
+    <ul>
+        <% for (var i = 0; i < Bookmarks.length ; i++) { %>
+            <tr><p>
+            <td><form action="/bookmarks/<%= Bookmarks[i].id %>?_method=DELETE" method="POST">
+            <span id="bookmark-<%= i %>" > <%= Bookmarks[i].url %> </span></td>
+                <td><input id="delete-button-<%= i %>" type="submit" value="Delete"/></td>
+            <td></form>
+
+            <form action="/bookmarks/<%= Bookmarks[i].id %>/edit" method="GET">
+                <input id="update-button-<%= i %>" type="submit" value="Update"/>
+            </form></td>
+            <td>
+                    <form action="/comment/<%= Bookmarks[i].id %>" method="GET">
+                <span class="comment"><%= Bookmarks[i].info %></span> </td>
+                <td>
+                <input class="commentButton" id="comment-button-<%= i %>" type="submit" value="Comment" justify-content="center">
+                </form>
+            </td>
+        </p> </tr>
+        <% } %>
+    </ul>
 </body>
 </html> 

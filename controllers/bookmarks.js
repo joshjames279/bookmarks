@@ -7,9 +7,11 @@ const Bookmark = require("../models").bookmark;
 
 router.get("/", async function (req, res) {
   const bookmarks = await Bookmark.findAll();
+  req.app.locals.text = '';
 
   res.render("pages/bookmarks", {
     Bookmarks: bookmarks.map((bookList) => bookList),
+    Comment: req.app.locals.text,
   });
 });
 
@@ -24,6 +26,7 @@ router.post("/", async function (req, res) {
 
   res.render("pages/bookmarks", {
     Bookmarks: bookmarks.map((bookList) => bookList),
+    Comment:req.app.locals.text,
   });
 });
 
@@ -36,6 +39,7 @@ router.delete("/:bookmarkId", async function (req, res) {
 
   res.render("pages/bookmarks", {
     Bookmarks: bookmarks.map((bookList) => bookList),
+    Comment: req.app.locals.text,
   });
 });
 
@@ -57,7 +61,10 @@ router.put("/:bookmarkId", async function (req, res) {
     { where: { id: req.params.bookmarkId } }
   );
   const bookmarks = await Bookmark.findAll();
-  res.render("pages/bookmarks", {Bookmarks: bookmarks.map((bookList) => bookList)})
+  res.render("pages/bookmarks", {
+    Bookmarks: bookmarks.map((bookList) => bookList),
+    Comment: req.app.locals.text,
+  })
 });
 
 module.exports = router;
