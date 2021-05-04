@@ -8,36 +8,31 @@
 </head>
 <body>
     <h1 style="text-align:center">Bookmarks</h1>
-    <table style="width:100%">
+    
     <form action="/bookmarks" method="POST">
         <input id="addForm" type="text" name="url">
         <input id="addButton" type="submit" value="Add">
     </form>
-    <tr>
-        <th></th>
-        <th></th> 
-        <th></th>
-        <th></th>
-      </tr>
+
+    <table style="width:100%">
     <ul>
         <% for (var i = 0; i < Bookmarks.length ; i++) { %>
-            <tr><p>
+            <tr>
             <td><form action="/bookmarks/<%= Bookmarks[i].id %>?_method=DELETE" method="POST">
             <span id="bookmark-<%= i %>" > <%= Bookmarks[i].url %> </span></td>
-                <td><input id="delete-button-<%= i %>" type="submit" value="Delete"/></td>
-            <td></form>
+            <td><input id="delete-button-<%= i %>" type="submit" value="Delete"/></td>
+            </form>
 
-            <form action="/bookmarks/<%= Bookmarks[i].id %>/edit" method="GET">
+            <td><form action="/bookmarks/<%= Bookmarks[i].id %>/edit" method="GET">
                 <input id="update-button-<%= i %>" type="submit" value="Update"/>
             </form></td>
-            <td>
-                    <form action="/comment/<%= Bookmarks[i].id %>" method="GET">
+
+            <td><form action="/comment/<%= Bookmarks[i].id %>" method="GET">
                 <span class="comment"><%= Bookmarks[i].info %></span> </td>
                 <td>
                 <input class="commentButton" id="comment-button-<%= i %>" type="submit" value="Comment" justify-content="center">
-                </form>
-            </td>
-        </p> </tr>
+            </form></td>
+         </tr>
         <% } %>
     </ul>
 </body>

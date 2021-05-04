@@ -26,14 +26,15 @@ router.get("/:bookmarkId/edit", async function (req, res) {
 })
 
 router.put("/:bookmarkId", async function (req, res) {
-  console.log(req.body.comment)
   req.app.locals.text = req.body.comment
   
   await Bookmark.update(
     { info: req.body.comment },
     { where: { id: req.params.bookmarkId } }
   );
+
   const bookmarks = await Bookmark.findAll();
+  
   res.render("pages/bookmarks", {
     Bookmarks: bookmarks.map((bookList) => bookList),
   })
