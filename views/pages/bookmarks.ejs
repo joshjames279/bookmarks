@@ -27,11 +27,18 @@
                 <input id="update-button-<%= i %>" type="submit" value="Update"/>
             </form></td>
 
-            <td><form action="/comment/<%= Bookmarks[i].id %>" method="GET">
-                <span class="comment"><%= Bookmarks[i].info %></span> </td>
-                <td>
-                <input class="commentButton" id="comment-button-<%= i %>" type="submit" value="Comment" justify-content="center">
+            <td><ul>
+                <% Bookmarks[i].comments.forEach((comment, commentIndex) => { %>
+                  <div id="bookmark-<%= i %>-comment-<%= commentIndex %>">
+                    <li><%= comment.comment %></li></div>
+              </ul>
+              <% }) %>
+            </td>
+
+            <td><form action="/bookmarks/<%= Bookmarks[i].id %>/comments/add" method="GET">
+                <input id="comment-button-<%= i %>" type="submit" value="Comment" justify-content="center">
             </form></td>
+
          </tr>
         <% } %>
     </ul>

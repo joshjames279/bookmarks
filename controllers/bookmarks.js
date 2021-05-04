@@ -1,16 +1,16 @@
 const express = require("express");
 let router = express.Router();
 
-const Bookmark = require("../models").bookmark;
+const { comment, bookmark } = require('../models')
 
 //START UP
 
 router.get("/", async function (req, res) {
-  const bookmarks = await Bookmark.findAll();
+  const Bookmarks = await bookmark.findAll({include: comment});
   req.app.locals.text = '';
 
   res.render("pages/bookmarks", {
-    Bookmarks: bookmarks.map((bookList) => bookList),
+    Bookmarks: Bookmarks.map((bookList) => bookList),
     Comment: req.app.locals.text,
   });
 });
@@ -18,14 +18,14 @@ router.get("/", async function (req, res) {
 //ADD
 
 router.post("/", async function (req, res) {
-  await Bookmark.create({
+  await bookmark.create({
     url: req.body.url,
   });
 
-  const bookmarks = await Bookmark.findAll();
+  const Bookmarks = await bookmark.findAll({include: comment});
 
   res.render("pages/bookmarks", {
-    Bookmarks: bookmarks.map((bookList) => bookList),
+    Bookmarks: Bookmarks.map((bookList) => bookList),
     Comment:req.app.locals.text,
   });
 });
@@ -33,12 +33,12 @@ router.post("/", async function (req, res) {
 //DELETE
 
 router.delete("/:bookmarkId", async function (req, res) {
-  await Bookmark.destroy({ where: { id: req.params.bookmarkId } });
+  await bookmark.destroy({ where: { id: req.params.bookmarkId } });
 
-  const bookmarks = await Bookmark.findAll();
+  const Bookmarks = await bookmark.findAll({include: comment});
 
   res.render("pages/bookmarks", {
-    Bookmarks: bookmarks.map((bookList) => bookList),
+    Bookmarks: Bookmarks.map((bookList) => bookList),
     Comment: req.app.locals.text,
   });
 });
@@ -46,23 +46,23 @@ router.delete("/:bookmarkId", async function (req, res) {
 //UPDATE
 
 router.get("/:bookmarkId/edit", async function (req, res) {
-  const bookmark = await Bookmark.findOne({
+  const Bookmark = await bookmark.findOne({
     where: { id: req.params.bookmarkId },
   });
   res.render("pages/update", {
-    bookmark: bookmark,
-    Url: bookmark.dataValues.url,
+    bookmark: Bookmark,
+    Url: Bookmark.dataValues.url,
   });
 });
 
 router.put("/:bookmarkId", async function (req, res) {
-  await Bookmark.update(
+  await bookmark.update(
     { url: req.body.url },
     { where: { id: req.params.bookmarkId } }
   );
-  const bookmarks = await Bookmark.findAll();
+  const Bookmarks = await bookmark.findAll({include: comment});
   res.render("pages/bookmarks", {
-    Bookmarks: bookmarks.map((bookList) => bookList),
+    Bookmarks: Bookmarks.map((bookList) => bookList),
     Comment: req.app.locals.text,
   })
 });

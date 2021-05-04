@@ -12,10 +12,10 @@ app.use(express.static(__dirname + '/css'));
 app.set("view engine", "ejs");
 
 const indexRouter = require("./controllers/bookmarks");
-const commentRouter = require("./controllers/comment");
+const commentRouter = require("./controllers/comments");
 
 app.use("/bookmarks", indexRouter);
-app.use("/comment", commentRouter);
+app.use("/bookmarks/:bookmarkId/comments", commentRouter);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
