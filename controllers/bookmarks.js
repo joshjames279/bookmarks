@@ -11,7 +11,7 @@ router.get("/", async function (req, res) {
 
   res.render("pages/bookmarks", {
 
-    Bookmarks: Bookmarks.map((bookList) => bookList),
+    Bookmarks: Bookmarks.map((bookList) => bookList)
 
   });
 });
