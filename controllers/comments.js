@@ -1,17 +1,22 @@
 const express = require("express");
 let router = express.Router({mergeParams: true});
 
-const { comment, bookmark } = require('../models')
+const { bookmark, comment } = require('../models')
+
+//SET UP COMMENTS
 
 router.get('/add', async function (req, res) {
   
   const Bookmark = await bookmark.findOne({ where: { id: req.params.bookmarkId } })
 
-  res.render("comments/add", { bookmark: Bookmark })
+  res.render("comments/add", { 
+    bookmark: Bookmark 
+  })
 })
 
+//ADD COMMENT
+
 router.post('/', async function (req, res) {
-  console.log(req.params)
 
   await comment.create({
     comment: req.body.comment,

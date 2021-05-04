@@ -28,18 +28,17 @@
             </form></td>
 
             <td><ul>
-                <% Bookmarks[i].comments.forEach((comment, commentIndex) => { %>
-                  <div id="bookmark-<%= i %>-comment-<%= commentIndex %>">
-                    <li><%= comment.comment %></li></div>
-              </ul>
-              <% }) %>
-            </td>
+                <% for (var j = 0; j < Bookmarks[i].comments.length ; j++) { %>
+                  <div id="bookmark-<%= i %>-comment-<%= j %>">
+                  <li><%= Bookmarks[i].comments[j].comment %></li></div>
+                <% } %>
+            </td></ul>
 
             <td><form action="/bookmarks/<%= Bookmarks[i].id %>/comments/add" method="GET">
                 <input id="comment-button-<%= i %>" type="submit" value="Comment" justify-content="center">
             </form></td>
 
-         </tr>
+            </tr>
         <% } %>
     </ul>
 </body>
