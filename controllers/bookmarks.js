@@ -7,7 +7,7 @@ const { bookmark, comment } = require('../models')
 
 router.get("/", async function (req, res) {
 
-  const Bookmarks = await bookmark.findAll({include: comment});
+  const Bookmarks = await bookmark.findAll({include: comment, order: [['id', 'DESC']]});
 
   res.render("pages/bookmarks", {
 
